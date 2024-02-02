@@ -1,58 +1,32 @@
-import {Router} from "express";
+import { Router } from "express";
 import passport from "passport";
-import {recover} from "../middlewares/recover.js";
-import {passportCallback} from "../util.js";
-import * as sessionController from "../controller/session.controllers.js";
-import {auth} from "../middlewares/auth.js";
+import { current, github, login, logout } from "../controller/session.controllers.js";
+import { isLogin } from "../middlewares/checkUser.js";
 
-const router = Router();
+const routerSessions = Router();
 
+routerSessions.post("/login", passport.authenticate("login", { failureRedirect: "faillogin" }), login);
 
-router.get(
-  "/github",
-  passport.authenticate("github", {scope: ["user:email"]}),
-  sessionController.github
+routerSessions.get("/faillogin", (req, res) => {
+   res.status(401).send({ error: "Error credenciales inválidas" });
+});
+
+routerSessions.post("/logout", logout);
+
+routerSessions.post(
+  "/register",
+  passport.authenticate("register", { failureRedirect: "failregister" }),
+  async (req, res) => {
+    res.send({ status: "success", message: "Usuario registrado", user: req.user });
+  }
 );
 
+routerSessions.get("/failregister", (req, res) => {
+  res.status(401).send({ status: "error", message: "Error al registrar el usuario" });
+});
 
+routerSessions.get("/github", passport.authenticate("github", { scope: ["user:email"] }), async (req, res) => {});
+routerSessions.get("/githubcallback", passport.authenticate("github", { failureRedirect: "login" }), github);
+routerSessions.get("/current", isLogin, current);
 
-router.get("/githubcallback",
-  passport.authenticate("github", {failureRedirect: "/login", session: false}),
-  sessionController.githubCallback
-);
-
-
-
-router.post("/register",
-  passportCallback("register"),
-  sessionController.register
-);
-
-
-
-router.post("/login", passportCallback("login"), sessionController.login);
-
-
-
-router.post("/logout",
-  auth(["user", "premium", "admin"]),
-  sessionController.logout
-);
-
-
-
-router.post("/recover", sessionController.recover);
-
-
-
-router.post(
-  "/recoverPassword/:token",
-  recover,
-  sessionController.recoverPassword
-);
-
-
-
-router.get("/current", passportCallback("jwt"), sessionController.current);
-
-export default router;
+export { routerSessions };

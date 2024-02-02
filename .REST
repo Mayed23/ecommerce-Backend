@@ -1,0 +1,48 @@
+###
+POST  http://localhost:8080/api/products
+Content-Type: application/json
+
+  {
+        
+        "title": "prueba4",
+        "price": 20,
+        "description": "prueba4",
+        "thumbnail": "imagenPrueba4",
+        "status":"true",
+        "stock":"15",
+        "code": "9998",
+        "category": "1" ,
+        "owner":  "maiteesteves@gmail.com"          
+            
+    }
+
+###
+PUT  http://localhost:8080/api/users
+Content-Type: application/json
+
+{
+    "first_title": "Jaime",
+    "last_title": "Lira",
+    "age": 30,
+    "email": "jaimelira@gmail.com",
+    "password": "123456",
+    "role": "user"
+   
+}
+
+###
+GET   http://localhost:8080/realtimeproducts
+Content-Type: application/json
+
+{
+    "title":"Filtro de Gasolina",
+    "description":"Aveo",
+    "price":12,
+    "thumbnail":"filtroexternoaveo.png",
+    "status": true,
+    "code":"1239",
+    "category":"2",
+    "stock":"15"
+}
+
+

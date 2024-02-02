@@ -1,30 +1,55 @@
-import {Router} from "express";
-import {recover} from "../middlewares/recover.js";
-import * as viewsController from "../controller/views.controllers.js";
-import {auth} from "../middlewares/auth.js";
+import { Router } from "express";
+import {
+  cartDetail,
+  changePassword,
+  chat,
+  home,
+  loginUser,
+  logoutUser,
+  productDetail,
+  products,
+  realTimeProducts,
+  registerUser,
+  resetPassword,
+  viewChangePassword,
+  viewLogin,
+  viewProfile,
+  viewRegister,
+  viewResetPassword,
+  addProductToCart,
+  buyCart,
+  adminUsers
+} from "../controller/views.controllers.js";
+import { checkResetToken } from "../middlewares/checkResetToken.js";
+import { checkToken } from "../middlewares/checkToken.js";
+import { isAdmin } from "../middlewares/checkUser.js";
 
-const router = Router();
+const routerViews = Router();
 
-router.get("/", viewsController.home);
+routerViews.get("/", home);
+routerViews.get("/realtimeproducts", realTimeProducts);
+routerViews.get("/chat", chat);
+routerViews.get("/products", checkToken, products);
+routerViews.get("/product/:pid", checkToken, productDetail);
+routerViews.get("/cart/:cid", checkToken, cartDetail);
+routerViews.get("/cart", checkToken, cartDetail);
+routerViews.post("/cart/:pid", checkToken, addProductToCart);// Agregamos un producto al carrito
+routerViews.post("/cart/buy/:cid", checkToken, buyCart);
+routerViews.get("/login", viewLogin);// Vista de login
+routerViews.post("/login", loginUser);
+routerViews.get("/register", viewRegister);// Vista de registro
+routerViews.post("/register", registerUser);
+routerViews.get("/profile", checkToken, viewProfile);// Vista de perfil
+routerViews.get("/logout", checkToken, logoutUser);// Cerrar sesión
+routerViews.get("/resetpassword", viewResetPassword);// Vista restaurar contraseña
+routerViews.post("/resetpassword", resetPassword);
+routerViews.get("/changepassword/:token", checkResetToken, viewChangePassword);// Vista cambiar contraseña
+routerViews.post("/changepassword", changePassword);
+routerViews.get("/adminusers", checkToken, isAdmin, adminUsers);// Vista de administrador
+// Documentación de la API
+// routerViews.get("/docs", swaggerUiExpress.serve, swaggerUiExpress.setup(specs));
 
-router.get("/chat", auth(["user", "premium"]), viewsController.chat);
+export { 
+    routerViews 
+};
 
-router.get("/products?", viewsController.products);
-
-router.get("/cart", auth(["user", "premium", "admin"]), viewsController.cart);
-
-router.get("/register", viewsController.register);
-
-router.get("/login", viewsController.login);
-
-router.get("/recover", viewsController.recover);
-
-router.get("/recoverPassword/:token", recover, viewsController.recoverPassword);
-
-router.get( "/profile", auth(["user", "premium", "admin"]), viewsController.profile);
-
-router.get("/loggerTest", viewsController.loggerTest);
-
-router.get("/admin",auth(["admin"]), viewsController.admin);
-
-export default router;

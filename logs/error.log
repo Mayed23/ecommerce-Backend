@@ -1,0 +1,35 @@
+error: user is not defined
+error: Invalid scheme, expected connection string to start with "mongodb://" or "mongodb+srv://"
+error: user is not defined
+error: user is not defined
+error: user is not defined
+error: user is not defined
+error: user is not defined
+error: user is not defined
+error: user is not defined
+error: user is not defined
+error: cartService.addCart is not a function
+error: cartService.addCart is not a function
+error: cartService.addCart is not a function
+error: cartService.addCart is not a function
+error: The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.
+error: m is not defined
+error: The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.
+error: MONGO_URL is not defined
+error: The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.
+error: cartService.addCart is not a function
+error: role is not defined
+error: role is not defined
+error: role is not defined
+error: role is not defined
+error: user is not defined
+error: No default engine was specified and no extension was provided.
+error: user is not defined
+error: user is not defined
+error: user is not defined
+error: user is not defined
+error: user is not defined
+error: user is not defined
+error: user is not defined
+error: user is not defined
+error: user is not defined
