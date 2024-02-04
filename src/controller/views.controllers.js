@@ -20,13 +20,14 @@ const home = async (req, res) => {
 
 const realTimeProducts = async (req, res) => {
   try {
-    res.render("realTimeProducts");
+    const products = await productServices.getAllProducts();
+    res.render("realTimeProducts", { products });  // Pasa los productos a la vista
   } catch (error) {
     logger.error(error.message);
     res.status(500).json({ error: "Server internal error" });
   }
-  console.log(realTimeProducts)
 };
+
 
 const chat = async (req, res) => {
   try {
@@ -75,6 +76,7 @@ const cartDetail = async (req, res) => {
   try {
     const { user } = verifyToken(req.cookies.token);
     const cart = await cartService.getCartById(user.cart);
+    console.log()
     if (!cart) return res.status(404).json({ msg: "Carrito no encontrado" });
 
     res.render("cart", { products: cart.products });
@@ -280,8 +282,10 @@ const getTicketFromEmail = async (req, res) => {
 const addProductToCart = async (req, res) => {
   try {
     const { user } = verifyToken(req.cookies.token);
-    
+    console.log(user)
+
     const cart = await cartService.getCartById(user.cart);
+    console.log(cart)
    
     const product = await productServices.getProductById(req.params.pid);
     await cartService.addProductToCart(cart._id, req.params.pid);
@@ -312,10 +316,11 @@ const buyCart = async (req, res) => {
   }
 };
 
-const adminUsers = async (req, res) => {
+const admin = async (req, res) => {
   try {
     const users = await userServices.getAllUsers();
-    res.render("adminUsers", { users });
+    res.render("admin", { users });
+   
   } catch (error) {
     logger.error(error.message);
     res.status(500).json({ error: "Server internal error" });
@@ -343,5 +348,5 @@ export {
   viewChangePassword,
   addProductToCart,
   buyCart,
-  adminUsers
+  admin
 };

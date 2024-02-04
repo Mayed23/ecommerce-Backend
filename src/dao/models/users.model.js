@@ -3,15 +3,24 @@ import { Schema, model } from "mongoose";
 
 const userSchema = new Schema(
   {
-    firstName: String,
-    lastName: String,
+    first_name: {
+      type: String,
+      Required: true,
+    },
+    last_name: {
+      type: String,
+    },
+
+    age: Number,
+
     email: {
       type: String,
-      required: true,
-      unique: true,
+      Required: true,
+      Unique: true,
     },
-    age: Number,
-    password: String,
+    password: {
+      type: String,
+    },
     cartId: {
       type: [
         {

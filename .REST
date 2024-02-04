@@ -17,7 +17,7 @@ Content-Type: application/json
     }
 
 ###
-PUT  http://localhost:8080/api/users
+GET  http://localhost:8080/api/users
 Content-Type: application/json
 
 {
@@ -31,7 +31,7 @@ Content-Type: application/json
 }
 
 ###
-GET   http://localhost:8080/realtimeproducts
+POST http://localhost:8080/api/products
 Content-Type: application/json
 
 {
@@ -45,4 +45,79 @@ Content-Type: application/json
     "stock":"15"
 }
 
+###
+GET  http://localhost:8080/api/products/mockingproducts
+
+###
+GET  http://localhost:8080/api/products
+
+###
+POST   http://localhost:8080/api/products
+
+
+
+###
+POST http://localhost:8080/register
+Content-Type: application/json
+
+{
+    "first_name": "Mario",
+    "last_name": "Este",
+    "age": 30,
+    "email": "mario@gmail.com",
+    "password": "123456",
+    "role": "admin",
+    "documents": 
+        [{
+          "name": "public/uploads/documents/cedula.png",
+          "reference": "Ref1"
+        },
+        {
+          "name": "Documento2",
+          "reference": "Ref2"
+        }]
+     
+}
+
+###
+GET  http://localhost:8080/api/users
+
+###
+GET http://localhost:8080/api/users/65b6b22c57fe9928a2d48e4b
+
+
+###
+GET http://localhost:8080/api/users/email/meste@gmail.com
+
+
+###
+GET http://localhost:8080/api/users/premium/65be8c3605d85223ac964d5a
+
+###
+PUT  http://localhost:8080/65be8c3605d85223ac964d5a/documents
+Content-Type: application/json
+
+{
+    "_id": "65be8c3605d85223ac964d5a",
+    "first_name": "Maite",
+    "last_name": "Esteves",
+    "age": 30,
+    "email": "meste@gmail.com",
+    "password": "$2b$10$51pLf/lFhJFk9.yWZr6FmO2ljAJIKOJlTLrX9ZF/5Vr4Dtg7mQmVe",
+    "cartId": [],
+    "role": "user",
+    "documents": [],
+    "__v": 0
+     
+}
+
+###
+DELETE http://localhost:8080/api/users/65b6b22c57fe9928a2d48e4b
+
+
+###
+GET http://localhost:8080/api/products/65beb84d8a4995509942e2f8
+
+###
+GET http://localhost:8080/api/carts
 

@@ -13,7 +13,7 @@ import { checkMongoId } from "../middlewares/checkMongoId.js";
 
 const routerProducts = Router();
 
-routerProducts.get("/mockingporducts", generateMockingProducts);
+routerProducts.get("/mockingproducts", generateMockingProducts);
 routerProducts.get("/", getAllProducts);//listamos todos los productos
 routerProducts.get("/:id", checkMongoId, getProductById);//listamos un producto por ID
 routerProducts.post("/", isAuthorize, addProduct);//adicionamos producto con autorización

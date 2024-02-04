@@ -76,8 +76,8 @@ const addDatos = async (req, res) => {
   } catch (error) {
     logger.error(error.message);
     res.status(500).json({ error: "Server internal error" });
-  }
-};
+  };
+}
 
 const deleteUsers = async (req, res) => {
   try {

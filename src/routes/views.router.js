@@ -18,7 +18,8 @@ import {
   viewResetPassword,
   addProductToCart,
   buyCart,
-  adminUsers
+  admin
+
 } from "../controller/views.controllers.js";
 import { checkResetToken } from "../middlewares/checkResetToken.js";
 import { checkToken } from "../middlewares/checkToken.js";
@@ -45,7 +46,7 @@ routerViews.get("/resetpassword", viewResetPassword);// Vista restaurar contrase
 routerViews.post("/resetpassword", resetPassword);
 routerViews.get("/changepassword/:token", checkResetToken, viewChangePassword);// Vista cambiar contraseña
 routerViews.post("/changepassword", changePassword);
-routerViews.get("/adminusers", checkToken, isAdmin, adminUsers);// Vista de administrador
+routerViews.get("/admin", checkToken, isAdmin, admin);// Vista de administrador
 // Documentación de la API
 // routerViews.get("/docs", swaggerUiExpress.serve, swaggerUiExpress.setup(specs));
 

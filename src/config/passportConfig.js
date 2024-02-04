@@ -84,6 +84,7 @@ const initializePassport = () => {
       async (accessToken, refreshToken, profile, done) => {
         try {
           const user = await userServices.getUserByEmail(profile._json.email);
+          console.log(user)
           if (!user) {
             // Si el email viene en null o undefined, le asignamos el id de github
             const email = profile._json.email || profile._json.id;

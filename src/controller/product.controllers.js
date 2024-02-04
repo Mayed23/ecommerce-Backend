@@ -1,4 +1,4 @@
-uraimport * as productServices from "../services/product.services.js";
+import * as productServices from "../services/product.services.js";
 import { EErrors, customError } from "../utils/customErro.js";
 import { generateProducts } from "../utils/generate.Products.js";
 import { logger } from "../utils/logger.js";
@@ -43,9 +43,11 @@ const addProduct = async (req, res) => {
   const body = req.body;
   try {
     const user = req.session.user;
+    console.log(user)
     // Verificamos si el usuario es premium y si lo es, le asignamos el producto
     if (user.role === "premium") {
       const newProduct = { ...body, owner: user.email };
+      console.log(newProduct)
       const resProducts = await productServices.addProduct(newProduct);
       return res.status(200).json(resProducts);
     }
@@ -100,6 +102,7 @@ const deleteProduct = async (req, res) => {
 const generateMockingProducts = async (req, res) => {
   try {
     const products = generateProducts();
+    console.log(products)
     if (products.length > 1)
       customError({
         name: "Error mock",

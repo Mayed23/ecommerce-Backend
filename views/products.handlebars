@@ -1,15 +1,25 @@
-<h2>Productos</h2>
-<div class="d-flex flex-row flex-wrap container">
-  {{#each products}}
-    <div class="border-1 border m-1 p-2">
-      <h4 class="">{{title}}</h4>
-      <img src={{thumbnail}} alt="">
-      <p>{{description}}</p>
-      <p>{{price}}</p>
-      <a href="/product/{{_id}}">
-      <button>Detalles</button>
-      </a>
-    </div>
+<div class="container">
+
+    <h1 style="text-align: center">Productos</h1>
+    <br>
+    <div class="row row-cols-2 row-cols-md-3">
+
+        {{#each products}}
+        <div>
+            <div>
+                    <div class="card mb-3" style="background-color: rgba(127, 210, 255, 0.399);">
+                        <img src={{this.thumbnail}} alt="">
+                            <div class="card-body" >
+                                <h3> Nombre: {{this.title}}</h3>
+                                <h4> Modelo: {{this.description}}</h4>
+                                <p>{{this.price}}</p>
+                                <a href="/product/{{this.id}}">
+                                    <button class="btn btn-outline-dark">Detalles</button>
+                                </a>
+                            </div>   
+                </div>
+            </div>    
+        </div>    
   {{/each}}
 </div>
 <div class="container d-flex "> 
