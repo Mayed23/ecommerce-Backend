@@ -5,13 +5,13 @@ import * as cartService from "../services/cart.services.js";
 import { createHash, isValidPassword } from "../utils/hashPassword.js";
 import { generateToken, verifyToken } from "../utils/jwt.js";
 import { logger } from "../utils/logger.js";
-import { sendLinkResetPassword } from "../utils/sendLinkPAssword.js";
+import { sendLinkResetPassword } from "../utils/sendLinkPassword.js";
 import { userDTO } from "../dto/user.dto.js";
 
 const home = async (req, res) => {
   try {
     
-    res.render("home", { user });
+    res.render("home");
   } catch (error) {
     logger.error(error.message);
     res.status(500).json({ error: "Server internal error" });
@@ -65,7 +65,7 @@ const productDetail = async (req, res) => {
   const { pid } = req.params;
   try {
     const product = await productServices.getProductById(pid);
-    res.render("itemDetail", product);
+      res.render("itemDetail", product);
   } catch (error) {
     logger.error(error.message);
     res.status(500).json({ error: "Server internal error" });
@@ -76,7 +76,7 @@ const cartDetail = async (req, res) => {
   try {
     const { user } = verifyToken(req.cookies.token);
     const cart = await cartService.getCartById(user.cart);
-    console.log()
+     
     if (!cart) return res.status(404).json({ msg: "Carrito no encontrado" });
 
     res.render("cart", { products: cart.products });
@@ -101,19 +101,27 @@ const loginUser = async (req, res) => {
     // Verificamos los datos ingresados
     const user = await userServices.getUserByEmail(email);
 
-
     if (!user || !isValidPassword(user, password))
       return res.render("login", { error: "Usuario o contraseña incorrectos" });
 
+    // Crear un carrito para el usuario (puedes ajustar esto según tus necesidades)
+    const newCart = await cartService.addCart() // Supongamos que tienes una función para crear un carrito vacío
+
+    // Asignar el carrito al usuario
+    user.cart = newCart;
+
+    // Guardar los cambios en la base de datos
+    await user.save();
+
     const userToken = userDTO(user);
-    console.log(user)
+    console.log(user);
 
     const token = generateToken(userToken);
 
     res.cookie("token", token, { maxAge: 3600000, httpOnly: true });
 
-    // Redireccionamos al perfil del usuario
-    return res.redirect("/profile");
+    // Redireccionamos al Pagina de Inicio
+    return res.redirect("/home");
   } catch (error) {
     logger.error(error.message);
     res.status(500).json({ error: "Server internal error" });
@@ -218,7 +226,7 @@ const resetPassword = async (req, res) => {
     // Enviamos el mail con el link para resetear la contraseña
     sendLinkResetPassword(token, email);
 
-    res.render("sendMailConfirm", { email });
+    res.render("sendEmail", { email });
   } catch (error) {
     logger.error(error.message);
     res.status(500).json({ error: "Server internal error" });
@@ -288,6 +296,8 @@ const addProductToCart = async (req, res) => {
     console.log(cart)
    
     const product = await productServices.getProductById(req.params.pid);
+    if (!product) return res.status(404).json({ msg: "Producto no encontrado" });
+    
     await cartService.addProductToCart(cart._id, req.params.pid);
     const newCart = await cartService.getCartById(user.cart);
  

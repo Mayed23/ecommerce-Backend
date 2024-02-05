@@ -20,10 +20,7 @@ const productSchema = new Schema(
       type: String,
       required: true,
     },
-    thumbnails: {
-      type: Array,
-      required: true,
-    },
+    thumbnail: String, 
     status: {
       type: Boolean,
       required: true,

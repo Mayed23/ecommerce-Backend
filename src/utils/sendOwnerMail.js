@@ -11,7 +11,7 @@ const transporter = nodemailer.createTransport({
 
 const sendOwnerMail = async (owner) => {
   let result = await transporter.sendMail({
-    from: "Tienda Node",
+    from: "E-commerce",
     to: owner,
     subject: "Producto Eliminado",
     // Mandamos los datos del ticket en el cuerpo del mail

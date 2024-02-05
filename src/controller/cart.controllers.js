@@ -42,6 +42,7 @@ const addProductToCart = async (req, res) => {
     // Buscamos si existe el carrito y el producto en la base de datos
     const cart = await cartServices.getCartById(cid);
     if (!cart) return res.status(404).json({ msg: "Carrito no encontrado" });
+    
 
     const product = await productServices.getProductById(pid);
     if (!product) return res.status(404).json({ msg: "Producto no encontrado" });

@@ -61,21 +61,15 @@ POST http://localhost:8080/register
 Content-Type: application/json
 
 {
-    "first_name": "Mario",
-    "last_name": "Este",
+    "first_name": "Maite",
+    "last_name": "Esteves",
     "age": 30,
-    "email": "mario@gmail.com",
-    "password": "123456",
-    "role": "admin",
-    "documents": 
-        [{
-          "name": "public/uploads/documents/cedula.png",
-          "reference": "Ref1"
-        },
-        {
-          "name": "Documento2",
-          "reference": "Ref2"
-        }]
+    "email": "meste@gmail.com",
+    "password": "$2b$10$51pLf/lFhJFk9.yWZr6FmO2ljAJIKOJlTLrX9ZF/5Vr4Dtg7mQmVe",
+    "cartId": [],
+    "role": "user",
+    "documents": [],
+    "__v": 0
      
 }
 
@@ -93,22 +87,25 @@ GET http://localhost:8080/api/users/email/meste@gmail.com
 ###
 GET http://localhost:8080/api/users/premium/65be8c3605d85223ac964d5a
 
+
+
 ###
-PUT  http://localhost:8080/65be8c3605d85223ac964d5a/documents
+POST   http://localhost:8080/register
 Content-Type: application/json
 
 {
-    "_id": "65be8c3605d85223ac964d5a",
     "first_name": "Maite",
     "last_name": "Esteves",
     "age": 30,
-    "email": "meste@gmail.com",
-    "password": "$2b$10$51pLf/lFhJFk9.yWZr6FmO2ljAJIKOJlTLrX9ZF/5Vr4Dtg7mQmVe",
-    "cartId": [],
-    "role": "user",
-    "documents": [],
-    "__v": 0
-     
+    "email": "maiteesteves1972@gmail.com",
+    "password": "123456",
+    "role": "premium",
+    "documents": [
+        {
+            "nombre":"referencia 1",
+            "cedula":"cedula 1"
+        }
+    ]     
 }
 
 ###
@@ -119,5 +116,5 @@ DELETE http://localhost:8080/api/users/65b6b22c57fe9928a2d48e4b
 GET http://localhost:8080/api/products/65beb84d8a4995509942e2f8
 
 ###
-GET http://localhost:8080/api/carts
+GET http://localhost:8080/carts/65beb6698a4995509942e2da
 

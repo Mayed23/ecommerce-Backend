@@ -2,7 +2,7 @@ import * as productDao from "../src/dao/mongo/product.dao.js";
 import mongoose from "mongoose";
 import { expect } from "chai";
 
-mongoose.connect("mongodb://localhost:27017/tutoria-test");
+mongoose.connect("mongodb+srv://AdminMaite:maite1503@cluster0.twm9xie.mongodb.net/ecommerce-test?retryWrites=true&w=majority");
 
 describe("Test Products", () => {
   beforeEach(function () {

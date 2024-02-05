@@ -1,5 +1,6 @@
 import nodemailer from "nodemailer";
 
+
 const transporter = nodemailer.createTransport({
   service: "gmail",
   port: 587,
@@ -11,8 +12,8 @@ const transporter = nodemailer.createTransport({
 
 const sendTicketMail = async (ticket) => {
   let result = await transporter.sendMail({
-    from: "Tienda Node",
-    to: ticket.purchaser,
+    from: "E-commerce",
+    to: ticket.purchacer,
     subject: `Ticket de compra ${ticket.code}`,
     // Mandamos los datos del ticket en el cuerpo del mail
     html: `
@@ -20,7 +21,7 @@ const sendTicketMail = async (ticket) => {
       <p>Gracias por tu compra</p>
       <p>Este es tu ticket de compra</p>
       <p>Código: ${ticket.code}</p>
-      <p>Fecha: ${ticket.purchase_datetime}</p>
+      <p>Fecha: ${ticket.purchaseDateTime}</p>
       <p>Total: ${ticket.amount}</p>
     `,
   });

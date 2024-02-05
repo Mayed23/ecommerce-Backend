@@ -59,3 +59,39 @@ error: Cannot read properties of null (reading '_id')
 error: Cannot read properties of null (reading '_id')
 error: Cannot read properties of null (reading '_id')
 error: Cannot read properties of null (reading '_id')
+error: user is not defined
+error: user is not defined
+error: Cannot read properties of null (reading '_id')
+error: Cannot read properties of null (reading '_id')
+error: Cannot read properties of null (reading '_id')
+error: Cannot read properties of null (reading '_id')
+error: Cannot read properties of null (reading '_id')
+error: Cannot read properties of null (reading '_id')
+error: user is not defined
+error: user is not defined
+error: user is not defined
+error: Cannot read properties of undefined (reading 'query')
+error: user is not defined
+error: user is not defined
+error: user is not defined
+error: user is not defined
+error: user is not defined
+error: Cannot read properties of null (reading '_id')
+error: Cannot read properties of null (reading '_id')
+error: Cannot read properties of null (reading '_id')
+error: Cannot read properties of null (reading '_id')
+error: userUser is not defined
+error: Cannot access 'cartUser' before initialization
+error: Cannot read properties of null (reading '_id')
+error: userServices.addToCart is not a function
+error: userServices.addCart is not a function
+error: createEmptyCart is not defined
+error: ticket validation failed: purchaseDateTime: Path `purchaseDateTime` is required.
+error: ticket validation failed: purchaseDateTime: Path `purchaseDateTime` is required.
+error: ticket validation failed: purchaseDateTime: Path `purchaseDateTime` is required.
+error: ticket validation failed: purchaseDateTime: Path `purchaseDateTime` is required.
+error: ticket validation failed: purchaseDateTime: Path `purchaseDateTime` is required.
+error: ticket validation failed: purchaseDateTime: Path `purchaseDateTime` is required.
+error: ticket validation failed: purchaseDateTime: Path `purchaseDateTime` is required.
+error: user validation failed: role: `premiun` is not a valid enum value for path `role`.
+error: Cast to ObjectId failed for value "buy" (type string) at path "_id" for model "product"

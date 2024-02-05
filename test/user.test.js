@@ -16,7 +16,7 @@ describe("Test users", () => {
 
   it("get user by id", async () => {
    
-    const response = await api.get("/api/users/65a0df358e60d15eb2f4b631");
+    const response = await api.get("/api/users/65be74f7814799b435527a69");
     expect(response.status).to.eql(200);
     expect(response.body).to.be.an("object");
     expect(response.body).have.property("first_name");
@@ -24,7 +24,7 @@ describe("Test users", () => {
   });
 
   it("Change user role", async () => {
-    const response = await api.get("/api/users/premium/65a0df358e60d15eb2f4b631");
+    const response = await api.get("/api/users/premium/65be74f7814799b435527a69");
     expect(response.status).to.eql(200);
     expect(response.body).to.be.an("object");
     expect(response.body).have.property("newRole");

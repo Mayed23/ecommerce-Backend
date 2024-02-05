@@ -10,6 +10,7 @@ const generateTicket = async (req, res) => {
       purchaser: user.email,
       amount: cart.total,
     };
+
     const ticket = await ticketService.generateTicket(data);
 
     res.status(201).json(ticket);

@@ -11,7 +11,7 @@ const transporter = nodemailer.createTransport({
 
 const sendLinkResetPassword = async (token, email) => {
   let result = await transporter.sendMail({
-    from: "Tienda Node",
+    from: "E-commerce",
     to: email,
     subject: "Recuperar contraseña",
     // Mandamos el link para resetear el password en el cuerpo del mail
@@ -25,4 +25,6 @@ const sendLinkResetPassword = async (token, email) => {
   return result;
 };
 
-export { sendLinkResetPassword };
+export { 
+  sendLinkResetPassword 
+};

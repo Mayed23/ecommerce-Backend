@@ -27,7 +27,7 @@ import { isAdmin } from "../middlewares/checkUser.js";
 
 const routerViews = Router();
 
-routerViews.get("/", home);
+routerViews.get("/home", home);
 routerViews.get("/realtimeproducts", realTimeProducts);
 routerViews.get("/chat", chat);
 routerViews.get("/products", checkToken, products);
