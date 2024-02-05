@@ -47,8 +47,7 @@ routerViews.post("/resetpassword", resetPassword);
 routerViews.get("/changepassword/:token", checkResetToken, viewChangePassword);// Vista cambiar contraseña
 routerViews.post("/changepassword", changePassword);
 routerViews.get("/admin", checkToken, isAdmin, admin);// Vista de administrador
-// Documentación de la API
-// routerViews.get("/docs", swaggerUiExpress.serve, swaggerUiExpress.setup(specs));
+
 
 export { 
     routerViews 
