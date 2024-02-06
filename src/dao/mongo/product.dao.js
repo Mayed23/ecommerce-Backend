@@ -9,6 +9,7 @@ const getAllProducts = async (query, options) => {
 
 // Llamamos un producto por su id
 const getProductById = async (id) => {
+  console.log(id)
   const productFind = await productModel.findOne({ _id: id });
   return productFind;
 };

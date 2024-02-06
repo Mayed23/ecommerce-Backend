@@ -32,7 +32,7 @@ const addProductToCart = async (cid, pid) => {
     { $inc: { "products.$.quantity": 1 } },
     { new: true }
   );
-
+    console.log(cid, pid, cartUpdate)
   if (!cartUpdate) {
     const newCart = await cartModel.findByIdAndUpdate(
       cid,

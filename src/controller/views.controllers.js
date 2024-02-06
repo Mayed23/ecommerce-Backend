@@ -319,6 +319,13 @@ const buyCart = async (req, res) => {
       amount: cart.total,
     };
     const ticket = await ticketService.generateTicket(data);
+    //Antes de eliminar cart recorrer el carro y por cada product descontar de la tabla de producto 
+    cart.products.forEach(async (item) =>{
+      const productDao = await productServices.getProductById(item.product.id);
+      
+      const newQuantity = productDao.stock - item.quantity
+      await productServices.updateProduct(item.product.id, {stock: newQuantity});
+    })
     await cartService.removeAllProductsFromCart(cart);
     res.status(200).render("ticket", { ticket });
   } catch (error) {
