@@ -95,9 +95,3 @@ error: ticket validation failed: purchaseDateTime: Path `purchaseDateTime` is re
 error: ticket validation failed: purchaseDateTime: Path `purchaseDateTime` is required.
 error: user validation failed: role: `premiun` is not a valid enum value for path `role`.
 error: Cast to ObjectId failed for value "buy" (type string) at path "_id" for model "product"
-error: Cast to Number failed for value "NaN" (type number) at path "quantity"
-error: Cast to Number failed for value "NaN" (type number) at path "quantity"
-error: Cast to ObjectId failed for value "buy" (type string) at path "_id" for model "product"
-error: Cast to ObjectId failed for value "buy" (type string) at path "_id" for model "product"
-error: quantity is not defined
-error: Cast to ObjectId failed for value "[Function: next]" (type function) at path "_id" for model "cart"
